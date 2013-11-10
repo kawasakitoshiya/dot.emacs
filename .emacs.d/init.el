@@ -28,6 +28,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;; syntax highlight
+(set-face-foreground 'font-lock-function-name-face "yellow")
+
 ;;dont use tab and use 4 spaces
 (setq-default tab-width 4 indent-tabs-mode nil)
 
