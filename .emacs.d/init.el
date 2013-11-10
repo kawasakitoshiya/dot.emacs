@@ -18,14 +18,33 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
-;;key-bindings                                                                                                                                                                        
+;;key-bindings
 (define-key global-map "\C-h" 'delete-backward-char)
 (define-key global-map "\M-?" 'help-for-help)
 (define-key global-map (kbd "C-z") 'undo)
 (define-key global-map (kbd "M-a") 'anything)
-(define-key global-map (kbd "C-i") 'indent-region)
+(define-key global-map (kbd "M-i") 'indent-region)
 
-;; I never use C-x C-c
-(global-set-key (kbd "C-x C-c") '(message "cant exit")) 
-(defalias 'exit 'save-buffers-kill-emacs)
 
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;;dont use tab and use 4 spaces
+(setq-default tab-width 4 indent-tabs-mode nil)
+
+;;color Tab and 2 byte space
+(defface my-face-b-1 '((t (:background "NavajoWhite4"))) nil) ;2byte space
+(defface my-face-b-2 '((t (:background "gray10"))) nil) ;Tab
+(defface my-face-u-1 '((t (:background "SteelBlue" :underline t))) nil) ; spaces at end of lien
+(defvar my-face-b-1 'my-face-b-1)
+(defvar my-face-b-2 'my-face-b-2)
+(defvar my-face-u-1 'my-face-u-1)
+
+(defadvice font-lock-mode (before my-font-lock-mode ())
+ (font-lock-add-keywords
+ major-mode
+ '(("\t" 0 my-face-b-2 append)
+ ("　" 0 my-face-b-1 append)
+ ("[ \t]+$" 0 my-face-u-1 append)
+ )))
+(ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
+(ad-activate 'font-lock-mode)
