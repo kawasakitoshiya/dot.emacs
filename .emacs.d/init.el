@@ -51,3 +51,24 @@
  )))
 (ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
 (ad-activate 'font-lock-mode)
+
+;; C++ style
+(add-hook 'c++-mode-hook
+          '(lambda()
+             (c-set-style "stroustrup")))
+
+;; anzu
+(global-anzu-mode +1)
+(anzu-mode +1)
+
+;;auto-complete
+(require 'auto-complete)
+(global-auto-complete-mode t)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-1.4/dict")
+(require 'auto-complete-config)
+(ac-config-default)
+(require 'ac-python)
+;; C-n/C-p
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
