@@ -1,0 +1,27 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '((".google.com"
+  [url-cookie "PREF" "ID=52694f035c03e5be:FF=0:TM=1389892234:LM=1389892234:S=fndV5Z4HgQ7nDNKd" "16-Jan-2016 17:10:34.00 GMT" "/" ".google.com" nil]
+  [url-cookie "NID" "67=f4dQY4OiP8ti-PXE9yPWCXXTOHZ8-4XWLJCgM_lqDUTUxGkbhOoYDDmRIN2mWiramoQBAI1qb8SNDsGVvFOCy7uvQ0bMNbdswzIjRVOYG5djKzmBgBxF4u66rwtrlcm8" "18-Jul-2014 17:10:34.00 GMT" "/" ".google.com" nil]
+  [url-cookie "HttpOnly" nil "18-Jul-2014 17:10:34.00 GMT" "/" ".google.com" nil])
+ (".google.co.jp"
+  [url-cookie "PREF" "ID=ec525286a4b371a2:U=d11d76bd7262d96d:FF=0:TM=1389892234:LM=1389892247:S=TgjAdDYNQ_AEMWCH" "16-Jan-2016 17:10:47.00 GMT" "/" ".google.co.jp" nil]
+  [url-cookie "NID" "67=fEaI1LiDRffTEYLAWO7eLvYacPr0kpddiNNVohwEUTCHCFHiQFl3H4jH02pelz2H5JMDzmulry5AuBU0TobPbQifndfOB-S19SAyLxPi7TQCaSHCKc3fJAPXE-HtkCHd" "18-Jul-2014 17:10:34.00 GMT" "/" ".google.co.jp" nil]
+  [url-cookie "HttpOnly" nil "18-Jul-2014 17:10:34.00 GMT" "/" ".google.co.jp" nil])
+ (".facebook.com"
+  [url-cookie "datr" "rRLYUtOYP9AhtH2_ImzBCOaH" "16-Jan-2016 17:11:09.00 GMT" "/" ".facebook.com" nil])
+ (".twitter.com"
+  [url-cookie "guest_id" "v1%3A138989231464227746" "16-Jan-2016 17:11:54.00 UTC" "/" ".twitter.com" nil])
+ ("marmalade-repo.org"
+  [url-cookie "connect.sid" "wZzgST2nUmgOLZyNAQipnHl0.jNGLZCu6VaMcs4%2B8fc4ZcB0KwYkt1DKzs%2BdGxa8UHSs" "Thu, 16 Jan 2014 21:40:28 GMT" "/" "marmalade-repo.org" nil]
+  [url-cookie "httpOnly" nil "Thu, 16 Jan 2014 21:40:28 GMT" "/" "marmalade-repo.org" nil]))
+)
+(setq url-cookie-secure-storage
+ 'nil)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

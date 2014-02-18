@@ -67,8 +67,13 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-1.4/dict")
 (require 'auto-complete-config)
 (ac-config-default)
-(require 'ac-python)
+;;(require 'ac-python)
 ;; C-n/C-p
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
+
+;; zencoding-mode
+(require 'zencoding-mode)
+(add-hook 'sgml-mode-hook 'zencoding-mode)
+(define-key zencoding-mode-keymap (kbd "M-i") 'zencoding-expand-line)
