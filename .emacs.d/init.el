@@ -77,3 +77,30 @@
 (require 'zencoding-mode)
 (add-hook 'sgml-mode-hook 'zencoding-mode)
 (define-key zencoding-mode-keymap (kbd "M-i") 'zencoding-expand-line)
+
+
+;; jedi
+(require 'epc)
+(require 'auto-complete-config)
+(require 'python)
+
+(setenv "PYTHONPATH" "/usr/local/lib/python2.7/site-packages")
+(require 'jedi)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
+;;; flymake for python
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "python-pep8-pyflakes"  (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+(load-library "flymake-cursor")
+(global-set-key [f10] 'flymake-goto-prev-error)
+(global-set-key [f11] 'flymake-goto-next-error)
