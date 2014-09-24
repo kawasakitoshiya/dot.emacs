@@ -1,18 +1,44 @@
 ;;package repository
 (require 'package)
-(add-to-list 'package-archives
-	     '("marmalade" .
-	       "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;(add-to-list 'package-archives
+;;	     '("marmalade" .
+;;	       "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
-;;anything requirements
-(defvar org-directory "")
-(require 'anything)
-(require 'anything-config)
-(require 'anything-match-plugin)
-(require 'anything-complete)
-(anything-read-string-mode 1)
-(require 'anything-show-completion)
+;; ;;anything requirements
+;; (defvar org-directory "")
+;; (require 'anything)
+;; (require 'anything-config)
+;; (require 'anything-match-plugin)
+;; (require 'anything-complete)
+;; (anything-read-string-mode 1)
+;; (require 'anything-show-completion)
+
+;; helm
+(add-to-list 'load-path "~/your-path/helm")
+(require 'helm-config)
+(helm-mode 1)
+;; disable helm-find-file
+(require 'helm-mode)
+(helm-mode 1)
+(add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
+(add-to-list 'helm-completing-read-handlers-alist '(mode-dired . nil))
+
+(custom-set-variables '(helm-ff-auto-update-initial-value nil))
+(define-key helm-c-read-file-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-c-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+
+(define-key global-map (kbd "M-x")     'helm-M-x)
+(define-key global-map (kbd "C-x C-f") 'helm-find-files)
+(define-key global-map (kbd "C-x C-r") 'helm-recentf)
+(define-key global-map (kbd "M-y")     'helm-show-kill-ring)
+(define-key global-map (kbd "C-x b")   'helm-buffers-list)
+(define-key global-map (kbd "M-a")     'helm-buffers-list)
+
+
+(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
 
 ;;dont make backup file
 (setq make-backup-files nil)
@@ -22,7 +48,7 @@
 (define-key global-map "\C-h" 'delete-backward-char)
 (define-key global-map "\M-?" 'help-for-help)
 (define-key global-map (kbd "C-z") 'undo)
-(define-key global-map (kbd "M-a") 'anything)
+;(define-key global-map (kbd "M-a") 'anything)
 (define-key global-map (kbd "M-i") 'indent-region)
 
 
@@ -118,3 +144,10 @@
             (local-set-key "\C-cpa" 'nosetests-pdb-all)
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
+
+;; japanese
+(set-language-environment 'Japanese)
+(prefer-coding-system 'utf-8)
+
+(setq default-input-method "MacOSX")
+
