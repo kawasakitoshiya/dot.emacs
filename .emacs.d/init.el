@@ -36,6 +36,8 @@
 (define-key global-map (kbd "C-x b")   'helm-buffers-list)
 (define-key global-map (kbd "M-a")     'helm-buffers-list)
 
+(define-key global-map (kbd "M-q")     'shell-command)
+
 
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
@@ -124,7 +126,7 @@
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-      (list "python-pep8-pyflakes"  (list local-file))))
+      (list "flake8"  (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init)))
 (load-library "flymake-cursor")
@@ -150,4 +152,10 @@
 (prefer-coding-system 'utf-8)
 
 (setq default-input-method "MacOSX")
+(add-hook 'python-mode-hook '(lambda ()
+     (define-key python-mode-map "\C-m" 'newline-and-indent)))
+
+;; C++
+(setq-default c-basic-offset 4)
+
 
